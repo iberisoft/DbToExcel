@@ -64,21 +64,24 @@ namespace DbToExcel
             using (var package = new ExcelPackage(new FileInfo(filePath)))
             {
                 var workbookBinding = new WorkbookBinding(XDocument.Load(bindingFilePath));
-                FillWorkbook(rows, package.Workbook, workbookBinding);
+                PopulateWorkbook(rows, package.Workbook, workbookBinding);
                 package.Save();
             }
         }
 
-        private static void FillWorkbook(Dictionary<string, object>[] rows, ExcelWorkbook workbook, WorkbookBinding workbookBinding)
+        private static void PopulateWorkbook(Dictionary<string, object>[] rows, ExcelWorkbook workbook, WorkbookBinding workbookBinding)
         {
             foreach (var worksheetBinding in workbookBinding.Worksheets)
             {
                 var worksheet = workbook.Worksheets[worksheetBinding.Name];
-                FillWorksheet(rows, worksheet, worksheetBinding);
+                if (worksheet != null)
+                {
+                    PopulateWorksheet(rows, worksheet, worksheetBinding);
+                }
             }
         }
 
-        private static void FillWorksheet(Dictionary<string, object>[] rows, ExcelWorksheet worksheet, WorksheetBinding worksheetBinding)
+        private static void PopulateWorksheet(Dictionary<string, object>[] rows, ExcelWorksheet worksheet, WorksheetBinding worksheetBinding)
         {
             foreach (var cellBinding in worksheetBinding.Cells)
             {

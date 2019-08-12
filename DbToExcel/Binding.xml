@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Workbook>
+  <Worksheet Name="Sheet1">
+    <Cell Name="A2" Source="ComponentName" />
+    <Cell Name="B2" Source="ComponentId" />
+    <Cell Name="C2" Source="ComponentOwnerName" />
+    <Cell Name="D2" Source="Modality" />
+    <Cell Name="E2" Source="Description" />
+    <Cell Name="F2" Source="DateTime" Format="d" />
+    <Cell Name="G2" Source="DateTime" Format="t" />
+    <Cell Name="H2" Source="UserId" />
+    <Cell Name="I2" Source="InspectorName" />
+  </Worksheet>
+</Workbook>
